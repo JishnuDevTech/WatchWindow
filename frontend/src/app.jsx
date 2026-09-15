@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from './components/layout.jsx';
 import Login from './pages/login.jsx';
 import Signup from './pages/signup.jsx';
+import ForgotPassword from './pages/forgotPassword.jsx';
 import Onboarding from './pages/onboarding.jsx';
 import Dashboard from './pages/dashboard.jsx';
 import Schedule from './pages/schedule.jsx';
@@ -12,13 +13,13 @@ import authService from './services/authService';
 import './index.css';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    authService.isAuthenticated()
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = authService.onAuthChange((user) => {
       setIsAuthenticated(!!user);
+      setAuthLoading(false);
     });
 
     return unsubscribe;
@@ -26,10 +27,15 @@ function App() {
 
   return (
     <Router>
-      <Routes>
+      {authLoading ? (
+        <div className="flex min-h-screen items-center justify-center bg-slate-50">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-slate-200 border-t-blue-600" aria-label="Loading authentication" />
+        </div>
+      ) : <Routes>
         {/* Auth routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* Protected routes */}
         <Route
@@ -61,7 +67,7 @@ function App() {
             )
           }
         />
-      </Routes>
+      </Routes>}
     </Router>
   );
 }

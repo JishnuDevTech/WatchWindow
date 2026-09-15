@@ -9,8 +9,9 @@ const api = axios.create({
 });
 
 // Add auth token to requests
-api.interceptors.request.use((config) => {
-  const token = authService.getToken();
+api.interceptors.request.use(async (config) => {
+  await authService.waitUntilReady();
+  const token = await authService.refreshToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
