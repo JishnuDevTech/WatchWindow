@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, ChevronLeft, ChevronRight, Clock, X } from 'lucide-react';
+import { Plus, ChevronLeft, ChevronRight, Clock, X, Tv, AlertCircle } from 'lucide-react';
 import { format, addDays } from 'date-fns';
 import scheduleService from '../services/scheduleService';
 import reservationService from '../services/reservationService';
@@ -206,15 +206,24 @@ export default function Schedule() {
       {/* Header */}
       <div className="bg-white border-b border-slate-200 sticky top-0 z-20">
         <div className="container-safe py-6">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-bold text-slate-900">TV Schedule</h1>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <p className="ww-eyebrow mb-2">Shared TV time</p>
+              <h1 className="text-2xl font-bold text-slate-900">TV Schedule</h1>
+            </div>
             <button
               onClick={openReservationModal}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 flex items-center gap-2 transition-colors"
             >
               <Plus size={20} />
-              Add Viewing
+              Find a window
             </button>
+          </div>
+
+          <div className="ww-status-legend mb-5">
+            <span><i className="current" /> Now</span>
+            <span><i className="reserved" /> Reserved</span>
+            <span><i className="planned" /> Planned</span>
           </div>
 
           {/* Date Navigation */}
@@ -271,14 +280,14 @@ export default function Schedule() {
       <div className="container-safe py-8">
         {error && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 flex items-center gap-2">
-            <span>⚠️</span>
+            <AlertCircle size={18} />
             {error}
           </div>
         )}
 
         {dayEvents.length === 0 ? (
           <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
-            <div className="text-6xl mb-4">📺</div>
+            <Tv className="text-slate-300 mx-auto mb-4" size={48} />
             <h3 className="text-xl font-semibold text-slate-900 mb-2">
               No viewing scheduled
             </h3>
@@ -352,12 +361,12 @@ export default function Schedule() {
         )}
       </div>
 
-      {/* Add Event Modal */}
+      {/* Reservation modal */}
       {showAddModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-40 p-4">
           <div className="dialog-content w-full max-w-md max-h-screen overflow-y-auto">
             <div className="flex items-center justify-between p-6 border-b border-slate-200">
-              <h2 className="text-xl font-bold text-slate-900">Reserve Viewing</h2>
+              <h2 className="text-xl font-bold text-slate-900">Find a viewing window</h2>
               <button
                 onClick={() => setShowAddModal(false)}
                 className="p-2 hover:bg-slate-100 rounded-lg"

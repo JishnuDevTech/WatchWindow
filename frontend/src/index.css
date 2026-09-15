@@ -1,9 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --ww-ink: #102a43;
+  --ww-muted: #627d98;
+  --ww-line: #d9e2ec;
+  --ww-canvas: #f5f7fa;
+  --ww-surface: #ffffff;
+  --ww-blue: #1769aa;
+  --ww-blue-dark: #0f4c81;
+  --ww-blue-soft: #eaf3fb;
+  --ww-amber: #c97a16;
+  --ww-amber-soft: #fff5e5;
+  --ww-green: #147d64;
+  --ww-green-soft: #e8f6f1;
+  --ww-red: #b42318;
+  --ww-red-soft: #fef0ef;
+}
+
 * {
-  @apply transition-colors duration-200;
+  box-sizing: border-box;
+  transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+  transition-duration: 160ms;
 }
 
 html {
@@ -11,11 +32,29 @@ html {
 }
 
 body {
-  @apply bg-slate-50 text-slate-900;
+  margin: 0;
+  background: var(--ww-canvas);
+  color: var(--ww-ink);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3, h4, button, nav {
+  font-family: 'Manrope', 'DM Sans', sans-serif;
+}
+
+h1, h2, h3, h4, p { margin-top: 0; }
+
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+
+button:disabled { cursor: not-allowed; }
+
 .container-safe {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 /* Custom scrollbar */
@@ -28,14 +67,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded hover:bg-slate-400;
+  background: #bcccdc;
+  border-radius: 999px;
 }
 
 /* Focus states */
 button:focus-visible,
 a:focus-visible,
-input:focus-visible {
-  @apply outline-2 outline-offset-2 outline-blue-500;
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(23, 105, 170, 0.24);
+  outline-offset: 1px;
 }
 
 /* Dialog animations */
@@ -49,10 +92,73 @@ input:focus-visible {
 }
 
 .dialog-overlay {
-  @apply fixed inset-0 bg-black/50 backdrop-blur-sm;
+  background: rgba(16, 42, 67, 0.48);
+  backdrop-filter: blur(4px);
 }
 
 .dialog-content {
   animation: dialogSlideIn 0.2s ease-out;
-  @apply bg-white rounded-lg shadow-lg;
+  background: var(--ww-surface);
+  border: 1px solid var(--ww-line);
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(16, 42, 67, 0.18);
+}
+
+/* Shared controls used by the existing screens. */
+.bg-slate-50 { background-color: var(--ww-canvas) !important; }
+.bg-white { background-color: var(--ww-surface) !important; }
+.text-slate-900 { color: var(--ww-ink) !important; }
+.text-slate-600, .text-slate-500 { color: var(--ww-muted) !important; }
+.border-slate-200, .border-slate-300 { border-color: var(--ww-line) !important; }
+
+input, textarea, select {
+  min-height: 44px;
+  border-radius: 8px !important;
+  border-color: var(--ww-line) !important;
+  color: var(--ww-ink);
+  background: #fff;
+}
+
+textarea { padding-top: 11px; }
+
+.bg-blue-600 { background-color: var(--ww-blue) !important; }
+.hover\:bg-blue-700:hover { background-color: var(--ww-blue-dark) !important; }
+.text-blue-600, .text-blue-700 { color: var(--ww-blue) !important; }
+.bg-blue-50 { background-color: var(--ww-blue-soft) !important; }
+.border-blue-200 { border-color: #b8d5ec !important; }
+
+.rounded-xl, .rounded-2xl { border-radius: 12px !important; }
+.shadow-sm { box-shadow: 0 1px 3px rgba(16, 42, 67, 0.06) !important; }
+.shadow-lg { box-shadow: 0 18px 45px rgba(16, 42, 67, 0.12) !important; }
+
+.ww-page-header {
+  border-bottom: 1px solid var(--ww-line);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.ww-eyebrow {
+  color: var(--ww-blue);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ww-status-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--ww-muted);
+  font-size: 0.8rem;
+}
+
+.ww-status-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.ww-status-legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.ww-status-legend .current { background: var(--ww-amber); }
+.ww-status-legend .reserved { background: var(--ww-green); }
+.ww-status-legend .planned { background: var(--ww-blue); }
+
+@media (max-width: 640px) {
+  .container-safe { padding-left: 16px; padding-right: 16px; }
 }

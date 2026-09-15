@@ -24,8 +24,8 @@ WatchWindow/
 │   │   ├── components/      # Reusable UI components
 │   │   ├── pages/           # Full page components
 │   │   ├── services/        # API and data services
-│   │   ├── data/            # Demo data
-│   │   ├── App.jsx          # Main app component
+│   │   ├── data/            # Local fallback data
+│   │   ├── app.jsx          # Main app component
 │   │   └── main.jsx         # Entry point
 │   ├── index.html
 │   ├── package.json
@@ -137,17 +137,13 @@ WatchWindow/
 
    Frontend will be available at `http://localhost:5173`
 
-## Quick Demo
+## Getting Started In The App
 
 1. Start both backend and frontend servers
 2. Go to `http://localhost:5173`
-3. Click "Demo Login" to enter with test account
-4. Explore the dashboard, schedule, and family features
-5. Try adding events, inviting family members, and reserving time slots
-
-**Demo Account:**
-- Email: `you@example.com`
-- Password: `demo123`
+3. Create an account or sign in
+4. Create or join a family
+5. Find an available TV window and reserve it from the schedule
 
 ## API Endpoints
 
@@ -260,7 +256,7 @@ WatchWindow is built on these principles:
 ### Key Design Decisions
 
 1. **Frontend Services** - All API calls go through services, making it easy to swap implementations
-2. **Mock Data** - Demo data enables development without backend
+2. **Local Fallback Data** - Local fallback data keeps the interface usable while the backend is unavailable
 3. **Clean Separation** - UI knows nothing about database implementation
 4. **Placeholder Interfaces** - Reserved features (scheduling engine, AI) have clean interfaces
 

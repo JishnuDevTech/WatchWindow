@@ -92,7 +92,7 @@ class ReservationService {
     }
   }
 
-  // Get available slots (placeholder for scheduling engine)
+  // Get available slots from the core scheduling service.
   async getAvailableSlots(familyId, date) {
     try {
       const response = await api.get(`/families/${familyId}/available-slots`, {

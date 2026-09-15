@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Copy, Check, Plus, Mail, X } from 'lucide-react';
+import { Copy, Check, Plus, Mail, X, UsersRound } from 'lucide-react';
 import familyService from '../services/familyService';
 
 export default function Family() {
@@ -117,7 +117,7 @@ export default function Family() {
 
               {members.length === 0 ? (
                 <div className="p-12 text-center">
-                  <div className="text-5xl mb-4">👥</div>
+                  <UsersRound className="text-slate-300 mx-auto mb-4" size={48} />
                   <p className="text-slate-600 mb-4">No members yet</p>
                   <button
                     onClick={() => setShowInviteModal(true)}
@@ -135,8 +135,8 @@ export default function Family() {
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-2xl">
-                            {member.avatar || '👤'}
+                          <div className="w-12 h-12 bg-blue-50 text-blue-700 rounded-full flex items-center justify-center text-lg font-semibold">
+                            {(member.name || '?').charAt(0).toUpperCase()}
                           </div>
                           <div>
                             <h3 className="font-semibold text-slate-900">

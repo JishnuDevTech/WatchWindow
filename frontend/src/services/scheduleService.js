@@ -1,5 +1,5 @@
 import api from './apiService';
-import { getDemoSchedule } from '../data/Demodata.js';
+import { getProductSchedule } from '../data/productData.js';
 
 class ScheduleService {
   constructor() {
@@ -29,9 +29,8 @@ class ScheduleService {
       this.notifyListeners();
       return this.schedules;
     } catch (error) {
-      console.warn('Using demo schedule:', error.message);
-      // Fallback to demo data
-      this.schedules = getDemoSchedule();
+      console.warn('Using local schedule data:', error.message);
+      this.schedules = getProductSchedule();
       this.notifyListeners();
       return this.schedules;
     }

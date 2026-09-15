@@ -25,21 +25,8 @@ export default function Login() {
     }
   };
 
-  const handleDemoLogin = async () => {
-    setError('');
-    setLoading(true);
-    try {
-      await authService.signIn('you@example.com', 'demo123');
-      navigate('/dashboard');
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
@@ -114,20 +101,6 @@ export default function Login() {
             </button>
           </form>
 
-          {/* Demo mode */}
-          <div className="mt-6 pt-6 border-t border-slate-200">
-            <p className="text-center text-sm text-slate-600 mb-3">
-              Try demo mode with test account
-            </p>
-            <button
-              onClick={handleDemoLogin}
-              disabled={loading}
-              className="w-full bg-slate-100 text-slate-700 font-medium py-2 rounded-lg hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              Demo Login (you@example.com)
-            </button>
-          </div>
-
           {/* Sign up link */}
           <p className="text-center text-sm text-slate-600 mt-6">
             Don't have an account?{' '}
@@ -137,10 +110,6 @@ export default function Login() {
           </p>
         </div>
 
-        {/* Info */}
-        <div className="mt-8 text-center text-sm text-slate-600">
-          <p>This is a demo. Use demo login to explore the app.</p>
-        </div>
       </div>
     </div>
   );

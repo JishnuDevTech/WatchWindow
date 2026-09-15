@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || '/api';
 
-// Mock Firebase auth for demo purposes
 class AuthService {
   constructor() {
     this.currentUser = this.getUserFromStorage();
@@ -38,7 +37,6 @@ class AuthService {
     this.notifyListeners();
   }
 
-  // Mock sign up
   async signUp(email, password, name) {
     try {
       const response = await axios.post(`${API_URL}/auth/signup`, {
@@ -61,7 +59,6 @@ class AuthService {
     }
   }
 
-  // Mock sign in
   async signIn(email, password) {
     try {
       const response = await axios.post(`${API_URL}/auth/signin`, {

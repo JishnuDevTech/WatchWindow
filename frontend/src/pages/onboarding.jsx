@@ -42,7 +42,7 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-100 flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-12">
@@ -84,11 +84,11 @@ export default function Onboarding() {
 
               <button
                 onClick={() => setStep('join')}
-                className="w-full p-6 border-2 border-slate-200 rounded-xl hover:border-green-600 hover:bg-green-50 transition-colors text-left"
+                className="w-full p-6 border-2 border-slate-200 rounded-xl hover:border-blue-600 hover:bg-blue-50 transition-colors text-left"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                    <UserPlus className="text-green-600" size={24} />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <UserPlus className="text-blue-600" size={24} />
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900">

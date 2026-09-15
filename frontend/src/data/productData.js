@@ -2,7 +2,7 @@ import { addHours, addDays, format } from 'date-fns';
 
 const now = new Date();
 
-export const getDemoFamilies = () => [
+export const getProductFamilies = () => [
   {
     id: 'family_1',
     name: 'The Smiths',
@@ -13,7 +13,7 @@ export const getDemoFamilies = () => [
   }
 ];
 
-export const getDemoFamilyMembers = () => [
+export const getProductFamilyMembers = () => [
   {
     id: 'member_1',
     uid: 'user_mom',
@@ -52,7 +52,7 @@ export const getDemoFamilyMembers = () => [
   }
 ];
 
-export const getDemoSchedule = () => {
+export const getProductSchedule = () => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -137,7 +137,7 @@ export const getDemoSchedule = () => {
   ];
 };
 
-export const getDemoReservations = () => {
+export const getProductReservations = () => {
   const today = new Date();
   return [
     {

@@ -1,5 +1,5 @@
 import api from './apiService';
-import { getDemoFamilies, getDemoFamilyMembers } from '../data/Demodata.js';
+import { getProductFamilies, getProductFamilyMembers } from '../data/productData.js';
 
 class FamilyService {
   constructor() {
@@ -35,8 +35,8 @@ class FamilyService {
       this.notifyListeners();
       return this.families;
     } catch (error) {
-      console.warn('Using demo families:', error.message);
-      this.families = getDemoFamilies();
+      console.warn('Using local family data:', error.message);
+      this.families = getProductFamilies();
       if (this.families.length > 0 && !this.currentFamily) {
         this.setCurrentFamily(this.families[0]);
       }
@@ -84,8 +84,8 @@ class FamilyService {
       this.notifyListeners();
       return this.familyMembers;
     } catch (error) {
-      console.warn('Using demo family members:', error.message);
-      this.familyMembers = getDemoFamilyMembers();
+      console.warn('Using local family member data:', error.message);
+      this.familyMembers = getProductFamilyMembers();
       this.notifyListeners();
       return this.familyMembers;
     }
