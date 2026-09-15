@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-colors duration-200;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900;
+}
+
+.container-safe {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded hover:bg-slate-400;
+}
+
+/* Focus states */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  @apply outline-2 outline-offset-2 outline-blue-500;
+}
+
+/* Dialog animations */
+@keyframes dialogSlideIn {
+  from {
+    @apply opacity-0 scale-95;
+  }
+  to {
+    @apply opacity-100 scale-100;
+  }
+}
+
+.dialog-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm;
+}
+
+.dialog-content {
+  animation: dialogSlideIn 0.2s ease-out;
+  @apply bg-white rounded-lg shadow-lg;
+}
